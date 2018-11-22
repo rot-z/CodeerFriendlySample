@@ -1,0 +1,138 @@
+﻿<Window x:Class="CodeerFriendlySample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeerFriendlySample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600" FontSize="16">
+    <Window.Resources>
+        <!-- charactor button style -->
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="2,2,2,2" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- operation parts -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="5,5,5,5">
+            <StackPanel Orientation="Horizontal" Margin="2,2,2,2">
+                <Label Content="Input Mode" VerticalAlignment="Center" />
+                <ComboBox x:Name="cmbMode" Width="200"
+                          SelectedIndex="0">
+                    <ComboBox.Items>
+                        <ComboBoxItem Content="ひらがな" />
+                        <ComboBoxItem Content="カタカナ" />
+                    </ComboBox.Items>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2,2,2,2">
+                <Label Content="Input Text" VerticalAlignment="Center" />
+                <TextBox x:Name="txtInputText" Width="400" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Hiaragana -->
+        <Grid x:Name="grdHiragana" Grid.Row="1">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=SelectedIndex, ElementName=cmbMode}"
+                                     Value="0">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedIndex, ElementName=cmbMode}"
+                                     Value="1">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="あ" Grid.Row="0" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="い" Grid.Row="0" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="う" Grid.Row="0" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="え" Grid.Row="0" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="お" Grid.Row="0" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+
+            <Button Content="か" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="き" Grid.Row="1" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="く" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="け" Grid.Row="1" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="こ" Grid.Row="1" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+
+            <Button Content="さ" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="し" Grid.Row="2" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="す" Grid.Row="2" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="せ" Grid.Row="2" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="そ" Grid.Row="2" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+        </Grid>
+        <!-- Katakana -->
+        <Grid x:Name="grdKatakana" Grid.Row="1">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=SelectedIndex, ElementName=cmbMode}"
+                                     Value="0">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectedIndex, ElementName=cmbMode}"
+                                     Value="1">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="ア" Grid.Row="0" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="イ" Grid.Row="0" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="ウ" Grid.Row="0" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="エ" Grid.Row="0" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="オ" Grid.Row="0" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+
+            <Button Content="カ" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="キ" Grid.Row="1" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="ク" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="ケ" Grid.Row="1" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="コ" Grid.Row="1" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+
+            <Button Content="サ" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="シ" Grid.Row="2" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="ス" Grid.Row="2" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="セ" Grid.Row="2" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+            <Button Content="ソ" Grid.Row="2" Grid.Column="4" Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+        </Grid>
+    </Grid>
+</Window>
